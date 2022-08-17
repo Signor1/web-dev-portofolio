@@ -1,0 +1,1003 @@
+@mixin header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    width: 100%;
+    border-bottom: 1px solid $textColor;
+    padding-bottom: 20px;
+    .logo {
+        display: flex;
+        justify-content: center;
+        background: linear-gradient(to top right, $gradient1, $gradient2);
+        align-items: center;
+        height:100%;
+        width: 100px;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        outline: 1px solid $theme;
+        outline-offset: 5px;
+        box-sizing: border-box;
+        margin-left: 10px;
+        z-index: 2;
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: 4px solid transparent;
+            border-bottom-color: $textColor;
+            transform: scale(1.1);
+        }
+    }
+    nav.nav {
+        height: 100%;
+        overflow: hidden;
+        padding: 0.7rem 0;
+        box-sizing: border-box;
+        ul.navlist {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            column-gap: 2rem;
+            .navlink {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.7rem;
+                text-decoration: none;
+                position: relative;
+            }
+            .navlink > .indicator{
+                opacity: 0;
+            }
+            .navlink i {
+                font-size: 1.5rem;
+                color: $theme1;
+                z-index: 20;
+                transition: 0.3s;
+            }
+            .navname {
+                font-size: 1rem;
+                font-weight: 500;
+                transition: 0.4s;
+                transform: translateY(50px);
+                z-index: 20;
+                color: $textColor;
+                opacity: 0;
+                position: relative;
+            }
+            .indicator {
+                position: absolute;
+                top: -1.7rem;
+                fill: $theme1;
+                height: auto;
+                transition: 0.4s;
+                transform: rotate(180deg);
+            }
+            .active-link i {
+                color: $textColor;
+            }
+            .active-link .navname {
+                opacity: 1;
+                transform: translateY(15px);
+                &::before {
+                    content: "";
+                    position: absolute;
+                    background: $theme1;
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 7px;
+                    left: 48%;
+                    top: -0.8rem;
+                }
+            }
+            .active-link > .indicator{
+                opacity: 1;
+            }
+        }
+    }
+    .menuToggle{
+        display: none;
+        align-items: center;
+        position: fixed;
+        top: 2.2rem;
+        right: 0;
+        cursor: pointer;
+        box-shadow: 0 25px 35px rgba(0,0,0,0.1);
+        z-index: 9999;
+        filter: drop-shadow(0 25px 35px rgba(0,0,0,0.1));
+        svg.indicator{
+            position: absolute;
+            fill: $theme1;
+            height: auto;
+            transition: 0.4s;
+            transform: rotate(-90deg);
+            right: -1.5rem;
+        }
+        i{
+            position: absolute;
+            z-index: 2;
+            right: 0.8rem;
+            color: $textColor;
+            font-size: 1.5rem;
+        }
+        
+    }
+    .show{
+        .ri-close-line{
+            display: block !important;
+        }
+        .ri-menu-3-line{
+            display: none;
+        }
+    }
+    .show + .navigation{
+        right: 0;
+    }
+    .navigation{
+        position: fixed;
+        top: 4.5rem;
+        right: -50rem;
+        display: none;
+        transition: all 0.5s;
+        width: 50px;
+        height: 100vh;
+        background-color: $textColor;
+        box-shadow: 0 25px 35px rgba(0,0,0,0.1);
+        z-index: 9999;
+        filter: drop-shadow(0 25px 35px rgba(0,0,0,0.1));
+        border-top-left-radius: 2.5rem;
+        border-bottom-left-radius: 2.5rem;
+        .menu{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: absolute;
+            right: 1rem;
+            top: 2rem;
+            gap: 2rem;
+        }
+        a{
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.5rem;
+            color: $gradient1;
+            transition-duration: 350ms;
+            &:hover{
+                color: $theme;
+            }
+        }
+    }
+}
+
+@mixin mainAside{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@mixin main {
+    z-index: 12;
+    width: 40%;
+    box-sizing: border-box;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 4rem;
+    h3 {
+        font-weight: bolder;
+        letter-spacing: 0.5rem;
+        color: $gradient1;
+        font-size: 1.5rem;
+        font-style: italic;
+        font-family: cursive;
+    }
+    .name {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        position: relative;
+        animation: name 1s ease;
+        animation-iteration-count: 1;
+        h1 {
+            color: $gradient1;
+            font-size: 3.2rem;
+            word-spacing: 0.7rem;
+            span {
+                font-size: 4.5rem;
+                color:$textColor;
+                letter-spacing: 0.5rem;
+                position: relative;
+                text-shadow: -4px 2px 0px $gradient1;
+            }
+        }
+    }
+
+    @keyframes name{
+        0%{transform: scale(0);}
+        100%{transform: scale(1) rotate(720deg);}
+    }
+    
+    .buttons {
+        margin: 4rem 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3rem;
+        font-family: $font;
+        a {
+            text-decoration: none;
+            text-size-adjust: 0.6rem;
+            outline: 1px solid $textColor;
+            outline-offset: 3px;
+        }
+        .hi {
+            background:linear-gradient(to top right, $theme1, $theme);
+            padding: 15px 20px;
+            box-sizing: border-box;
+            color: $textColor;
+            font-size: 1.1rem;
+            font-family: cursive;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            &:hover {
+                color: $gradient1;
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: $textColor;
+                transition: all 0.8s;
+                z-index: -1;
+                transform: scale(0);
+            }
+            &:hover::before{
+                transform: scale(1) rotate(720deg);
+            }
+        }
+        .cv {
+            background:linear-gradient(to top right, $textColor, $theme2);
+            color: $gradient1;
+            box-sizing: border-box;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            font-family: $font;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            &:hover{
+                color: $textColor;
+            }
+            &::before{
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: $theme1;
+                transition: all 0.8s;
+                z-index: -1;
+                transform: translateY(100%) scale(0);
+            }
+            &:hover::before{
+                transform: translateY(0) scale(1);
+            }
+        }
+    }
+    
+}
+
+@mixin aside{
+    width: 60%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 5rem;
+    section{
+        box-sizing: border-box;
+        width: 450px;
+        height: 210px;
+        padding: 15px;
+        position: relative;
+        left: 5rem;
+        border-left-width: 5px;
+        border-right-width: 5px;
+        border-style: solid;
+        border-image: linear-gradient(to bottom, $theme, $theme2) 1 100%;
+        cursor: pointer;
+        animation: show 1s ease;
+        animation-iteration-count: 1;
+        &::before{
+            content: "";
+            width: 480px;
+            height: 180px;
+            background-color: transparent;
+            border: 1px solid $textColor;
+            position: absolute;
+            left: -1.2rem;
+            z-index: -1;
+        }
+        &:hover::before{
+            transform: skewY(-2deg);
+        }
+        p{
+            color: $textColor;
+            line-height: 1.5rem;
+            font-size: 1rem;
+            font-family: $font;
+        }
+    }
+    @keyframes show{
+        0%{transform:scale(0) translateX(100%);}
+        100%{transform:scale(1) translateX(0);}
+    }
+    .icons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: flex-end;
+        gap: 1rem;
+        position: relative;
+        margin: 4rem 0 2rem;
+        a{
+            text-decoration: none;
+            padding: 8px 11px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid $textColor;
+            position: relative;
+            animation: bounce 5s ease-in-out infinite;
+            &:hover{
+                animation-play-state: paused;
+                background-color: $textColor;
+            }
+            &:hover > i{
+                color: $gradient1;
+            }
+            i{
+                font-size: 1.5rem;
+                color: $textColor;
+                transition: all 0.5s ease-out;
+            }
+            &:nth-child(2){
+                animation-delay: 0.5s;
+            }
+            &:nth-child(3){
+                animation-delay: 1s;
+            }
+            &:nth-child(4){
+                animation-delay: 1.5s;
+            }
+        }
+        @keyframes bounce{
+            0%,100%{transform: translateY(-10px);}
+            50%{transform: translateY(0);}
+        }
+    }
+}
+
+@mixin mainFooter{
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    position: relative;
+    margin: 2rem auto 0;
+    outline: 1px solid $textColor;
+    outline-offset: 4px;
+    .footer{
+        width: 100%;
+        box-sizing: border-box;
+        height: 30px;
+        line-height: 30px;
+        position: relative;
+        background-color: transparent;
+        overflow :hidden;
+        margin-bottom: -16px;
+    }
+    .stack{
+        position: absolute;
+        background-color: $textColor;
+        color: $gradient1;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        height: 100%;
+        padding: 0 1.5rem;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    .scroll-text{
+        font-size: 1.4rem;
+        z-index: 1;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        animation: move 30s infinite linear;
+        transform: translateX(100%);
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    @keyframes move {
+        from{transform: translateX(100%);}
+        to {
+          transform: translateX(-150%);
+        }
+      }
+    p{
+        background-color: $textColor;
+        color: $gradient1;
+        padding: 1rem 0;
+        text-align: center;
+        word-wrap: normal;
+        margin-bottom: 0px;
+    }
+}
+
+@mixin projects{
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        h1{
+            color: $gradient1;
+            font-size: 3rem;
+            margin-left: 3rem;
+            position: relative;
+            animation: slide 2s ease;
+            animation-iteration-count: 1;
+            &::before{
+                content: "";
+                width: 70px;
+                height: 70px;
+                border-radius: 70px;
+                background: linear-gradient(to top left, $gradient1, $gradient2);
+                position: absolute;
+                outline: 1px solid $textColor;
+                outline-offset: -5px;
+                left: -0.5rem;
+                top: -0.2rem;
+                z-index: -1;
+            }
+            &::first-letter{
+                font-size: 3.5rem;
+                padding: 0 0.8rem;
+                color: $textColor;
+            }
+        }
+        @keyframes slide{
+            0%{transform: translateX(-100%) scale(0);}
+            100%{transform: scale(1) translateX(0);}
+        }
+        h3{
+            color: $theme1;
+            font-size: 0.9rem;
+            font-family: $font;
+            text-transform: uppercase;
+            position: relative;
+            align-self: center;
+            margin-left: 4rem;
+            animation: fadein 3s ease;
+            animation-iteration-count: 1;
+            &::before{
+                content: "";
+                position: absolute;
+                width: 80%;
+                height: 2px;
+                background-color: $textColor;
+                left: 0;
+                bottom: -2px;
+            }
+            &::after{
+                content: "";
+                position: absolute;
+                width: 40%;
+                height: 2px;
+                background-color: $textColor;
+                left: 0;
+                bottom: -10px;
+            }
+        }
+        @keyframes fadein{
+            0%{opacity: 0;}
+            100%{opacity: 1;}
+        }
+    }
+    aside{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        box-sizing: border-box;
+        gap: 4rem;
+        .card{
+            width: (100% / 3.5);
+            height: 350px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            outline: 1px solid $textColor;
+            outline-offset: 5px;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+            transition: all ease .5s;
+            a{
+                text-decoration: none;
+                color: $textColor;
+                background-color: $gradient2;
+                position: absolute;
+                left: 15px;
+                bottom: -45px;
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                transition: all 0.5s;
+                border-radius: 5px;
+            }
+            &:hover > a{
+                bottom: 15px;
+            }
+        }
+        .card-image{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .6;
+            position: absolute;
+            inset: 0;
+            transition: transform .75s;
+        }
+        .card:hover .card-image{
+            transform: scale(1.15);
+            filter:brightness(1.3);
+        }
+        .card-title{
+            position: absolute;
+            right: 15px;
+            bottom: 0px;
+            font-size: 1.3rem;
+            color: $textColor;
+            font-family: cursive;
+            text-shadow: 0 0 1px rgba(0,0,0,0.5);
+        }
+    }
+    button{
+        align-self: flex-start;
+        border: none;
+        outline: 1px solid $textColor;
+        outline-offset: 5px;
+        color: $gradient1;
+        background:linear-gradient(to top right, $textColor, $theme2);
+        padding: 10px 15px;
+        text-transform: uppercase;
+        font-family: $font;
+        font-weight: 600;
+        transition: 0.5s;
+        &:hover{
+            background: $theme1;
+            color: $textColor;
+        }
+    }
+}
+@mixin education{
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        h1{
+            color: $gradient1;
+            font-size: 3rem;
+            margin-left: 3rem;
+            position: relative;
+            animation: slide 2s ease;
+            animation-iteration-count: 1;
+            &::before{
+                content: "";
+                width: 70px;
+                height: 70px;
+                border-radius: 70px;
+                background: linear-gradient(to top left, $gradient1, $gradient2);
+                position: absolute;
+                outline: 1px solid $textColor;
+                outline-offset: -5px;
+                left: 0rem;
+                top: -0.2rem;
+                z-index: -1;
+            }
+            &::first-letter{
+                font-size: 3.5rem;
+                padding: 0 1rem;
+                color: $textColor;
+            }
+        }
+        @keyframes slide{
+            0%{transform: translateX(-100%) scale(0);}
+            100%{transform: scale(1) translateX(0);}
+        }
+        h3{
+            color: $theme1;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-family: $font;
+            position: relative;
+            align-self: flex-end;
+            margin-left: 3rem;
+            animation: fadein 3s ease;
+            animation-iteration-count: 1;
+            &::before{
+                content: "";
+                position: absolute;
+                width: 80%;
+                height: 2px;
+                background-color: $textColor;
+                left: 0;
+                bottom: -2px;
+            }
+            &::after{
+                content: "";
+                position: absolute;
+                width: 40%;
+                height: 2px;
+                background-color: $textColor;
+                left: 0;
+                bottom: -10px;
+            }
+        }
+        @keyframes fadein{
+            0%{opacity: 0;}
+            100%{opacity: 1;}
+        }
+    }
+    aside{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        box-sizing: border-box;
+        .card{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 300px;
+            height: 400px;
+            background-color: $textColor;
+            position: relative;
+            box-sizing: border-box;
+            padding:20px;
+            outline: 1px solid $textColor;
+            outline-offset: 5px;
+            cursor: pointer;
+            &::before{
+                content: "";
+                position: absolute;
+                width: inherit;
+                height: 360px;
+                left: -1rem;
+                z-index: -1;
+                background-color: $theme1;
+                transition: 0.5s;
+            }
+            &:hover::before{
+                left: -0.4rem;
+            }
+            
+            h1{
+                font-size: 1.5rem;
+                color: $theme;
+                transform: scale(1.5);
+            }
+            hr{
+                width: 100%;
+                color: $gradient2;
+            }
+            h2{
+                color: $gradient1;
+            }
+            .course{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                width: 100%;
+                p{
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    color: $theme;
+                    &:last-child{
+                        align-self: flex-end;
+                        font-size: 1rem;
+                    }
+                }
+            }
+            p{
+                color: $gradient1;
+                text-align: justify;
+                font-size: 1rem;
+            }
+        }
+    }    
+}
+
+@mixin contact{
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        h1{
+            color: $gradient1;
+            font-size: 3rem;
+            margin-left: 3rem;
+            position: relative;
+            animation: slide 2s ease;
+            animation-iteration-count: 1;
+            &::before{
+                content: "";
+                width: 70px;
+                height: 70px;
+                border-radius: 70px;
+                background: linear-gradient(to top left, $gradient1, $gradient2);
+                position: absolute;
+                outline: 1px solid $textColor;
+                outline-offset: -5px;
+                left: 0rem;
+                top: -0.2rem;
+                z-index: -1;
+            }
+            &::first-letter{
+                font-size: 3.5rem;
+                padding: 0 1rem;
+                color: $textColor;
+            }
+        }
+        @keyframes slide{
+            0%{transform: translateX(-100%) scale(0);}
+            100%{transform: scale(1) translateX(0);}
+        }
+        h3{
+            color: $theme1;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-family: $font;
+            position: relative;
+            align-self: flex-end;
+            width: 50%;
+            margin-left: 3rem;
+            animation: fadein 3s ease;
+            animation-iteration-count: 1;
+            &::before{
+                content: "";
+                position: absolute;
+                width: 80%;
+                height: 2px;
+                background-color: $textColor;
+                left: 0;
+                bottom: -2px;
+            }
+            &::after{
+                content: "";
+                position: absolute;
+                width: 40%;
+                height: 2px;
+                background-color: $textColor;
+                left: 0;
+                bottom: -10px;
+            }
+        }
+        @keyframes fadein{
+            0%{opacity: 0;}
+            100%{opacity: 1;}
+        }
+    }
+    aside{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        box-sizing: border-box;
+        .contacts{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            gap: 5rem;
+            li{
+                color: $textColor;
+                font-size: 1.1rem;
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 100%;
+            outline: 1px solid $textColor;
+            outline-offset: 5px;
+            padding: 1.5rem;
+            h1{
+                color: $textColor;
+                margin-left: 3rem;
+                font-family: cursive;
+            }
+            .row{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                box-sizing: border-box;
+                gap: 2rem;
+                margin-bottom: 2.5rem;
+                input, select{
+                    width: 50%;
+                    height: 35px;
+                    color: $textColor;
+                    background-color: transparent;
+                    border: none;
+                    font-size: 1rem;
+                    outline-offset: 3px;
+                    outline: 1px solid $textColor;
+                    &::placeholder{
+                        color: $textColor;
+                        font-size: 1rem;
+                    }
+                    &:focus{
+                        outline-offset: 3px;
+                        outline: 1px solid $theme1;  
+                    }
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button{
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+                }
+            }
+            textarea{
+                width: 100%;
+                background-color: transparent;
+                border: none;
+                outline-offset: 3px;
+                outline: 1px solid $textColor;
+                resize: none;
+                font-size: 1rem;
+                color: $textColor;
+                &::placeholder{
+                    color: $textColor;
+                    font-size: 1.2rem;
+                }
+                &:focus{
+                    outline-offset: 3px;
+                    outline: 1px solid $theme1;  
+                }
+            }
+            .btns{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 39.5rem;
+                margin-top: 2rem;
+                button{
+                    padding: 15px 20px;
+                    font-size: 1rem;
+                    font-family: $font;
+                    cursor: pointer;
+                    background-color: $textColor;
+                    color: $gradient1;
+                    width: 10rem;
+                    transition: 0.5s;
+                    border: none;
+                    outline: none;
+                    &:hover{
+                        background-color: $theme1;
+                        color: $textColor;
+                    }
+                }
+                .icon{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    a{
+                        text-decoration: none;
+                        padding: 8px 11px;
+                        background: transparent;
+                        border: 1px solid $textColor;
+                        &:hover{
+                            animation-play-state: paused;
+                            background-color: $textColor;
+                        }
+                        &:hover > i{
+                            color: $gradient1;
+                        }
+                        i{
+                            font-size: 1.5rem;
+                            color: $textColor;
+                            transition: all 0.5s ease-out;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//media query
+@mixin mQ($arg...){
+    @if length($arg) == 1{
+        @media only screen and (max-width: nth($arg, 1)){
+            @content;
+        }
+    }
+    @if length($arg) == 2{
+        @media only screen and (max-width: nth($arg, 1)) and (min-width: nth($arg, 2)){
+            @content;
+        }
+    }
+}

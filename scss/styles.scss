@@ -1,0 +1,521 @@
+@import "_mixins";
+
+//colors
+$theme: #295d09;
+$theme1: #69ab3d;
+$theme2: #aed36c;
+$textColor: #e9ebed;
+//gradients
+$gradient1 : #434343;
+$gradient2: #04030f;
+//font
+$font: serif;
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background: linear-gradient(to top right, $gradient1, $gradient2);
+    font-family: $font;
+}
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+*, *::before, *::after{
+    transition: all 0.5s ease;
+}
+
+.container {
+    width: 80%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    @include mQ(767px){
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    @include mQ(1024px, 768px){
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    header {
+        @include header;
+        overflow: hidden;
+        @include mQ(767px){
+            border-bottom: none;
+        }
+        @include mQ(1024px, 768px){
+            border-bottom: none;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            background: linear-gradient(to top left, $theme1, $textColor);
+            width: 800px;
+            height: 800px;
+            border-radius: 800px;
+            outline: 1px solid $textColor;
+            outline-offset: 5px;
+            left: -10rem;
+            @include mQ(767px){
+                width: 500px;
+                height: 500px;
+                border-radius: 500px;
+                outline: 1px solid transparent;
+            }
+            @include mQ(1024px, 768px){
+                width: 700px;
+                outline: 1px solid transparent;
+                height: 700px;
+                border-radius: 700px;
+            }
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+            z-index: -3;
+            left: 42%;
+            top: 8rem;
+            background: linear-gradient(to top right, $theme2, $theme);
+            animation: float 90s infinite linear;
+        }
+        @keyframes float{
+            0%{left: 42%;top: 8rem;}
+            25%{left: 60%;top: 12rem;}
+            50%{left: 50%;top: 8rem;}
+            75%{left: 70%; top: 12rem;}
+            100%{left: 42%; top: 8rem;}
+        }
+        .logo{
+            @include mQ(767px){
+                outline: 1px solid transparent;
+            }
+            @include mQ(1024px, 768px){
+                outline: 1px solid transparent;
+            }
+        }
+        .nav{
+            @include mQ(767px){
+                display: none;
+            }
+            @include mQ(1024px, 768px){
+                display: none;
+            }
+        }
+        .menuToggle{
+            @include mQ(1024px, 768px){
+                display: flex;
+            }
+            @include mQ(767px){
+                display: flex;
+            } 
+        }
+        .navigation{
+            @include mQ(1024px, 768px){
+                display: flex;
+            }
+            @include mQ(767px){
+                display: flex;
+            }
+        }
+    }
+}
+#mainAside{
+    @include mainAside;
+    @include mQ(767px){
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0rem;
+        margin-bottom: 2rem;
+    }
+    @include mQ(1024px, 768px){
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+}
+main{
+    @include main;
+    @include mQ(767px){
+        width: auto;
+    margin-top: 1rem;
+
+    }
+    @include mQ(1024px, 768px){
+    margin-top: 1rem;
+    width: auto;
+    }
+    h3{
+        @include mQ(767px){
+           font-size: 1.1rem;
+    
+        }
+    }
+    .name{
+        h1{
+            @include mQ(767px){
+                font-size: 2.2rem;
+            } 
+            span{
+                @include mQ(767px){
+                    font-size: 3.2rem;
+                }  
+            }
+        }
+    }
+    .buttons{
+        @include mQ(767px){
+            gap: 1.5rem;
+        margin: 2rem 0 2rem;
+        } 
+        .hi{
+            @include mQ(767px){
+                padding: 12px 15px;
+            font-size: 0.9rem;
+            }
+        }
+        .cv{
+            @include mQ(767px){
+            font-family: $font;
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            } 
+        }
+        
+    }
+}
+aside{
+    @include aside;
+    @include mQ(767px){
+        width: 90%;
+        padding: 0 1rem;
+        align-items: center;
+    justify-content: center;
+    }
+    @include mQ(1024px, 768px){
+        width: auto;
+        align-items: center;
+        justify-content: center;
+    }
+    section{
+        @include mQ(767px){
+            padding: 0.5rem 1.2rem 1rem;
+            height: 250px;
+            width: 300px;
+            left: 0;
+        }
+        @include mQ(1024px, 768px){
+            padding: 0 1.2rem;
+            left: 0;
+        }
+        &::before{
+            @include mQ(767px){
+                width: 330px;
+                height: 230px;
+                left: -1.1rem;
+            }
+            @include mQ(1024px, 768px){
+                width: 470px;
+                height: 200px;
+                left: -0.9rem;
+            } 
+        }
+        p{
+            @include mQ(767px){
+                line-height: 1.4rem;
+                font-size: 0.988rem;
+            } 
+        }
+    }
+}
+#projects{
+    @include projects;
+    @include mQ(767px){
+        gap: 0rem;
+        margin-top: 0rem;
+    }
+    @include mQ(1024px, 768px){
+        margin-top: 4rem;
+        gap: 0rem;
+    }
+    main{
+        h1{
+            @include mQ(767px){
+                font-size: 2rem;
+            margin-left: 2rem;
+            } 
+            &::before{
+                @include mQ(767px){
+                    width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                outline: 1px solid transparent;
+                left: -0.19rem;
+                top: -0.2rem;
+                } 
+            }
+            &::first-letter{
+                @include mQ(767px){
+                    font-size: 2.4rem;
+                padding: 0 0.8rem;
+                }
+                
+            }
+        }
+        h3{
+            @include mQ(767px){
+                align-self: flex-start;
+                margin-left: 0rem; 
+                margin-top: 6rem;
+            }
+            @include mQ(1024px, 768px){
+                margin-top: 4rem;
+                align-self: flex-start;
+                // margin-top: 3.5rem;
+                margin-left: 0rem;
+            }
+        }
+    }
+    aside{
+        @include mQ(767px){
+            flex-direction: column;
+            justify-content: center;
+            gap: 4rem;
+        }
+        @include mQ(1024px, 768px){
+            flex-direction: column;
+            justify-content: center;
+            gap: 4rem;
+        }
+        .card{
+            @include mQ(767px){
+                width: 300px;
+                height: 350px;
+            }
+            @include mQ(1024px, 768px){
+                width: 250px;
+                height: 300px;
+            }
+        }
+    }
+    button{
+        @include mQ(767px){
+            align-self: center;
+            margin-top: 3rem;
+        }
+        @include mQ(1024px, 768px){
+            margin-top: 3rem;
+            align-self: center;
+        }
+    }
+}
+#education{
+    @include education;
+    @include mQ(767px){
+        margin-top: 0rem;
+        gap: 0rem;
+    }
+    @include mQ(1024px, 768px){
+        margin-top: 4rem;
+        gap: 0rem;
+    }
+    main{
+        h1{
+            @include mQ(767px){
+                font-size: 2rem;
+            margin-left: 2rem;
+            } 
+            &::before{
+                @include mQ(767px){
+                    width: 50px;
+                outline: 1px solid transparent;
+                height: 50px;
+                border-radius: 50px;
+                left: 0rem;
+                top: -0.2rem;
+                } 
+            }
+            &::first-letter{
+                @include mQ(767px){
+                    font-size: 2.4rem;
+                padding: 0 0.8rem;
+                }
+                
+            }
+        }
+        h3{
+            @include mQ(767px){
+                width: 100%;
+                margin-left: 0rem;
+                margin-top: 6rem;
+                align-self: flex-start;
+                box-sizing: border-box;
+                // margin-top: 2.5rem;
+            }
+            @include mQ(1024px, 768px){
+                width: 100%;
+                margin-top: 4rem;
+                margin-left: 0rem;
+                align-self: flex-start;
+                box-sizing: border-box;
+                // margin-top: 2rem;
+            }
+        }
+    }
+    aside{
+        @include mQ(767px){
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+        @include mQ(1024px, 768px){
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+        .card{
+            @include mQ(767px){
+                height: auto;
+            }
+            @include mQ(1024px, 768px){
+                height: auto;
+            }
+        }
+    }
+}
+#contact{
+    @include contact;
+    @include mQ(767px){
+        margin-top: 0rem;
+        gap: 0rem;
+    }
+    @include mQ(1024px, 768px){
+        margin-top: 4rem;
+        gap: 0rem;
+    }
+    main{
+        h1{
+            @include mQ(767px){
+                font-size: 2rem;
+            margin-left: 2rem;
+            } 
+            &::before{
+                @include mQ(767px){
+                    width: 50px;
+                outline: 1px solid transparent;
+                height: 50px;
+                border-radius: 50px;
+                left: 0.15rem;
+                top: -0.2rem;
+                } 
+            }
+            &::first-letter{
+                @include mQ(767px){
+                    font-size: 2.4rem;
+                padding: 0 0.8rem;
+                }
+                
+            }
+        }
+        h3{
+            @include mQ(767px){
+                width: 100%;
+                margin-top: 6rem;
+                padding: 0 10px;
+                margin-left: 0rem;
+                box-sizing: border-box;
+                // margin-top: 2.5rem;
+            }
+            @include mQ(1024px, 768px){
+                margin-top: 4rem;
+                width: 100%;
+                margin-left: 0rem;
+                padding: 0 10px;
+                box-sizing: border-box;
+                // margin-top: 2rem;
+            }
+        }
+    }
+    aside{
+        @include mQ(1024px, 768px){
+            padding: 0 1rem;
+        }
+        .contacts{
+            @include mQ(767px){
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            @include mQ(1024px, 768px){
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+        }
+        form{
+            h1{
+                @include mQ(767px){
+                margin-left: 0rem;
+                margin-bottom: 1.5rem;    
+                }
+                @include mQ(1024px, 768px){
+                margin-bottom: 1.5rem;    
+                margin-left: 0rem;
+                }  
+            }
+            .row{
+                @include mQ(767px){
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 0rem;
+                    margin-bottom: 0;
+                }
+                @include mQ(1024px, 768px){
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    margin-bottom: 0;
+                    gap: 0rem;
+                } 
+                input, select{
+                    @include mQ(767px){
+                        width: 100%;
+                        margin-bottom: 2.5rem;
+                    }
+                    @include mQ(1024px, 768px){
+                        margin-bottom: 2.5rem;
+                        width: 100%;
+                    } 
+                }
+            }
+            .btns{
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+        }
+    }
+}
+footer{
+    @include mainFooter;
+}
